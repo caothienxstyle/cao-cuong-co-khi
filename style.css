@@ -1,0 +1,591 @@
+/* --- CÀI ĐẶT CHUNG --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
+}
+
+:root {
+    --primary-color: #ff6a00; /* Màu cam chủ đạo cơ khí */
+    --dark-bg: #11141a;       /* Nền đen tối tối giản */
+    --card-bg: #1a1e26;       /* Nền xám cho các thẻ card */
+    --text-white: #ffffff;
+    --text-gray: #a0a5b0;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+/* --- NAVIGATION BAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: rgba(17, 20, 26, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.logo small {
+    display: block;
+    font-size: 10px;
+    color: var(--text-gray);
+    letter-spacing: 4px;
+}
+.orange-text { color: var(--primary-color); }
+
+.nav-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    position: relative;
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: 0.3s;
+}
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+.nav-links a:hover { color: var(--primary-color); }
+
+.hotline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.hotline i {
+    font-size: 24px;
+    color: var(--primary-color);
+    animation: pulse 1.5s infinite;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1920'); /* Thay link ảnh xưởng cơ khí thực tế tại đây */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    position: relative;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90px, rgba(17,20,26,0.95) 40%, rgba(17,20,26,0.4));
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+.sub-title {
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+.hero-content h1 {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+.highlight {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-white);
+    background: linear-gradient(var(--primary-color), var(--primary-color));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-position: -600px 0;
+    animation: backflow 3s linear infinite alternate;
+}
+.hero-content p {
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+.hero-btns {
+    display: flex;
+    gap: 15px;
+}
+.btn {
+    padding: 14px 28px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.4s ease;
+}
+.btn-orange {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn-orange:hover {
+    background-color: #e05d00;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 106, 0, 0.3);
+}
+.btn-outline {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+}
+.btn-outline:hover {
+    background-color: white;
+    color: black;
+    transform: translateY(-3px);
+}
+
+/* Badge 10 năm kinh nghiệm góc phải */
+.experience-badge {
+    position: absolute;
+    right: 8%;
+    bottom: 15%;
+    background-color: var(--primary-color);
+    padding: 30px;
+    z-index: 2;
+    width: 220px;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.experience-badge h2 { font-size: 48px; font-weight: 700; }
+.experience-badge p { font-weight: 600; font-size: 14px; margin-bottom: 10px; }
+.experience-badge small { color: rgba(255,255,255,0.8); }
+
+/* --- CÁC SỐ LIỆU ĐẾM TỰ ĐỘNG --- */
+.counter-bar {
+    background-color: var(--card-bg);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 40px 8%;
+    border-bottom: 2px solid var(--primary-color);
+}
+.counter-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.counter-item i {
+    font-size: 36px;
+    color: var(--primary-color);
+}
+.counter-item h3 {
+    font-size: 32px;
+    font-weight: 700;
+}
+.counter-item p {
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+/* --- KHỐI DỊCH VỤ DỰ ÁN --- */
+.services-section {
+    padding: 80px 8%;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.section-title h2 {
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+.section-title .line {
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 15px auto 0;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.service-card {
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.card-bg {
+    position: absolute;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.service-card:hover .card-bg {
+    transform: scale(1.1) rotate(1deg);
+}
+.service-card::before {
+    content: '';
+    position: absolute;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(17,20,26,0.95) 20%, transparent);
+    z-index: 1;
+}
+.card-content {
+    position: absolute;
+    bottom: 0; left: 0;
+    padding: 30px;
+    z-index: 2;
+    width: 100%;
+}
+.card-content i {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+.card-content h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.card-content a {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+.service-card:hover .card-content a {
+    color: var(--primary-color);
+}
+
+/* --- TIỆN ÍCH NỔI --- */
+.floating-contact {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+}
+.float-btn {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+.phone-btn { background-color: var(--primary-color); }
+.zalo-btn { background-color: #0068ff; font-weight: bold; font-size: 12px;}
+.top-btn { background-color: #333; opacity: 0; pointer-events: none;}
+.top-btn.show { opacity: 1; pointer-events: auto;}
+
+/* --- ANIMATIONS HỆ THỐNG --- */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+@keyframes backflow {
+    100% { background-position: 0 0; }
+}
+
+
+/* --- TỐI ƯU RESPONSIVE TOÀN DIỆN CHO MOBILE & TABLET --- */
+@media (max-width: 768px) {
+    /* 1. Header & Banner */
+    .nav-links, .hotline { 
+        display: none; /* Ẩn menu và hotline để tránh chật màn hình */
+    }
+    .navbar {
+        padding: 15px 20px;
+    }
+    .hero-section { 
+        height: auto; 
+        padding: 120px 20px 40px; 
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content h1 { 
+        font-size: 32px; /* Thu nhỏ chữ tiêu đề chính */
+    }
+    .hero-btns {
+        justify-content: center;
+        flex-direction: column; /* Nút bấm xếp dọc cho dễ bấm */
+        gap: 10px;
+    }
+    .experience-badge { 
+        position: relative; 
+        right: 0; bottom: 0; 
+        margin: 30px auto 0; /* Đưa khối 10 năm kinh nghiệm ra giữa */
+        width: 100%;
+        max-width: 280px;
+    }
+
+    /* 2. Sửa các phần chia cột (Grid & Flex) về 1 cột dọc */
+    .counter-bar, 
+    .services-grid, 
+    .about-section > div, 
+    .reviews-section > div { 
+        grid-template-columns: 1fr !important; 
+        gap: 20px; 
+        padding: 40px 20px !important;
+    }
+
+    /* 3. Phần Dự án tiêu biểu (Từ 5 cột thành 2 cột cho đẹp, không bị quá dài) */
+    .projects-section {
+        padding: 40px 20px !important;
+    }
+    .projects-section > div:first-child {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+    .projects-section style, 
+    .projects-section > div:last-child {
+        grid-template-columns: repeat(2, 1fr) !important; /* Chia 2 cột trên mobile */
+        gap: 10px;
+    }
+
+    /* 4. Phần Quy trình làm việc (Xếp dọc và ẩn mũi tên chỉ hướng) */
+    .process-section > div:last-child {
+        flex-direction: column !important;
+        gap: 15px;
+    }
+    .step-arrow {
+        transform: rotate(90deg); /* Xoay mũi tên chỉ xuống dưới */
+        margin: 5px 0;
+    }
+    .process-step {
+        width: 100%;
+    }
+
+    /* 5. Phần Footer & Form liên hệ */
+    footer > div:first-child {
+        grid-template-columns: 1fr !important; /* Đưa thông tin, form và bản đồ về 1 cột */
+        gap: 35px;
+    }
+    footer {
+        padding: 40px 20px 20px !important;
+    }
+    footer border-top, footer hr {
+        margin-top: 20px;
+    }
+    footer > div:last-child {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* --- CSS BỔ SUNG CHO ĐẦY ĐỦ GIAO DIỆN MẪU --- */
+
+/* Nút bấm video nhấp nháy */
+.about-video-box {
+    overflow: hidden;
+    border-radius: 4px;
+}
+.play-btn-circle {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px; height: 70px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    color: white; font-size: 24px;
+    box-shadow: 0 0 0 0 rgba(255, 106, 0, 0.7);
+    animation: pulse-video 1.5s infinite;
+    cursor: pointer;
+}
+@keyframes pulse-video {
+    0% { transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 0 0 0 rgba(255, 106, 0, 0.7); }
+    70% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 20px rgba(255, 106, 0, 0); }
+    100% { transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 0 0 0 rgba(255, 106, 0, 0); }
+}
+.btn-about-orange {
+    position: absolute; bottom: 20px; left: 20px;
+    background-color: var(--primary-color);
+    color: white; padding: 10px 20px; text-decoration: none;
+    font-weight: bold; font-size: 12px; border-radius: 2px;
+}
+
+/* Thẻ Dự án tiêu biểu */
+.project-card {
+    position: relative;
+    height: 280px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.project-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+.pj-info {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    transform: translateY(10px);
+    transition: 0.3s ease;
+}
+.project-card:hover img { transform: scale(1.1); }
+.project-card:hover .pj-info { transform: translateY(0); }
+.pj-info h4 { font-size: 15px; margin-bottom: 5px; color: #fff;}
+.pj-info small { color: var(--primary-color);}
+
+/* Khối 5 bước Quy trình */
+.process-step {
+    background: #11141a;
+    padding: 25px;
+    border-radius: 4px;
+    text-align: center;
+    flex: 1;
+    border: 1px solid rgba(255,255,255,0.03);
+    transition: 0.3s;
+}
+.process-step:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+.step-number {
+    font-size: 32px; font-weight: 700; color: rgba(255,255,255,0.07);
+    margin-bottom: 10px; transition: 0.3s;
+}
+.process-step:hover .step-number { color: var(--primary-color); }
+.process-step h4 { font-size: 14px; margin-bottom: 10px; letter-spacing: 1px;}
+.process-step p { font-size: 12px; color: var(--text-gray); line-height: 1.5;}
+.step-arrow { color: rgba(255,255,255,0.1); font-size: 14px; }
+
+/* Thẻ đánh giá khách hàng */
+.review-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 4px;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+}
+.review-card:hover {
+    border-bottom-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+.review-card p { font-size: 14px; color: var(--text-gray); line-height: 1.6; font-style: italic;}
+
+/* --- TỐI ƯU CHỮ GIỚI THIỆU + HIỆU ỨNG TRƯỢT LÊN --- */
+.hero-content p {
+    color: #ffffff !important;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    max-width: 620px;
+    font-weight: 500;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.85), -1px -1px 0px rgba(0, 0, 0, 0.4);
+
+    /* Bắt đầu thêm hoạt ảnh tại đây */
+    opacity: 0;                          /* Ban đầu ẩn chữ đi */
+    transform: translateY(20px);         /* Đẩy chữ dịch xuống dưới 20px */
+    animation: fadeInUp 1s ease forwards; /* Chạy hiệu ứng tên là fadeInUp trong 1 giây */
+    animation-delay: 0.5s;               /* Chờ 0.5 giây sau khi load trang rồi mới hiện để chờ các phần khác */
+}
+
+/* Định nghĩa chuyển động cho hiệu ứng */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;                      /* Hiện rõ chữ */
+        transform: translateY(0);        /* Trả chữ về vị trí cũ */
+    }
+}
+
+
+/* ĐỊNH DẠNG KHỐI LOGO CAO CẤP */
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-link {
+    text-decoration: none; /* Bỏ gạch chân mặc định */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+/* Chữ CAO CƯỜNG và Icon bánh răng */
+.logo .orange-text {
+    color: var(--primary-color); /* Sử dụng màu cam thương hiệu của bạn */
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa icon và chữ */
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* Hiệu ứng xoay nhẹ cực nghệ cho icon bánh răng */
+.logo .icon-spin {
+    font-size: 20px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Chữ CƠ KHÍ nhỏ phía dưới */
+.logo .sub-logo {
+    color: #ffffff; /* Màu trắng nổi bật trên nền tối */
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 6.5px; /* Giãn chữ ra bằng chiều ngang chữ CAO CƯỜNG */
+    text-transform: uppercase;
+    margin-top: -2px; /* Kéo sát lên trên một chút cho cân đối */
+    padding-left: 2px; /* Cân bằng khoảng trống do letter-spacing tạo ra */
+    opacity: 0.7; /* Làm mờ nhẹ tạo chiều sâu phân cấp thị giác */
+    transition: all 0.3s ease;
+}
+
+/* ==========================================
+   HIỆU ỨNG HOVER (RÊ CHUỘT VÀO LOGO)
+   ========================================== */
+.logo-link:hover .orange-text {
+    color: #ffffff; /* Chữ to đổi sang màu trắng */
+}
+
+.logo-link:hover .sub-logo {
+    color: var(--primary-color); /* Chữ nhỏ đổi sang màu cam lửa */
+    opacity: 1;
+    letter-spacing: 8px; /* Hiệu ứng giãn chữ nhẹ cực công nghệ */
+}
+
+.logo-link:hover .icon-spin {
+    transform: rotate(180deg); /* Bánh răng tự xoay nửa vòng khi rê chuột vào */
+    color: #ffffff;
+}

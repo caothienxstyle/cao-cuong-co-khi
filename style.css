@@ -86,7 +86,9 @@ body {
 /* --- HERO SECTION --- */
 .hero-section {
     height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1920'); /* Thay link ảnh xưởng cơ khí thực tế tại đây */
+    /* Tạo hiệu ứng: 40% bên trái tối đen trong suốt, góc từ 40% đến 70% mờ dần ra sáng */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 70%), 
+                      url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1920'); 
     background-size: cover;
     background-position: center;
     display: flex;
@@ -96,9 +98,12 @@ body {
 }
 .hero-overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(90px, rgba(17,20,26,0.95) 40%, rgba(17,20,26,0.4));
-    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* 0.6 là độ tối (từ 0 đến 1) */
+    z-index: 1; /* Nằm trên ảnh nền */
 }
 .hero-content {
     position: relative;

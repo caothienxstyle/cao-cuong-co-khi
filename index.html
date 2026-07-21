@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cao Cường Cơ Khí - Thi Công Chuyên Nghiệp</title>
+    <title>Cơ Khí Cao Cường (Đăk Nông) - Thi Công Chuyên Nghiệp</title>
     <!-- Font Chữ Hiện Đại -->
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Icon FontAwesome -->
@@ -409,41 +409,24 @@
 </html>
 
 <script>
-  // Chặn click chuột phải
+  // 1. Chặn click chuột phải
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   });
 
-  // Chặn phím F12 và các tổ hợp phím mở Developer Tools
+  // 2. Chặn F12 và tổ hợp phím Inspect
   document.addEventListener('keydown', function(e) {
-    // Chặn F12
-    if (e.key === 'F12') {
+    if (e.key === 'F12' || 
+       (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) ||
+       (e.ctrlKey && ['U','u'].includes(e.key))) {
       e.preventDefault();
     }
-    // Chặn Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
-    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
-      e.preventDefault();
-    }
-    // Chặn Ctrl+U (Xem nguồn trang - View Source)
-    if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
-      e.preventDefault();
-    }
-// Tuyệt chiêu khóa chặt tab Sources khi mở DevTools
-(function() {
-  function blockDevTools() {
-    const startTime = new Date().getTime();
-    // Gọi lệnh debugger liên tục
-    debugger;
-    const endTime = new Date().getTime();
-    
-    // Nếu phát hiện có độ trễ (do F12/Sources đang mở), làm mới hoặc khóa tương tác
-    if (endTime - startTime > 100) {
-      document.body.innerHTML = "<h1>Nội dung đã được bảo vệ! Vui lòng quay lại trang chính.</h1>";
-    }
-  }
-
-  // Chạy kiểm tra liên tục mỗi 100ms
-  setInterval(blockDevTools, 100);
-})();
   });
+
+  // 3. TUYỆT CHIÊU: Liên tục gọi debugger để "đóng băng" khi bật DevTools / Tab Sources
+  setInterval(function() {
+    (function() {
+      return false;
+    })['constructor']('debugger')['call']();
+  }, 50);
 </script>

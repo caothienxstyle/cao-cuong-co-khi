@@ -1,4 +1,3 @@
-/* --- CÀI ĐẶT CHUNG --- */
 * {
     margin: 0;
     padding: 0;
@@ -7,9 +6,9 @@
 }
 
 :root {
-    --primary-color: #ff6a00; /* Màu cam chủ đạo cơ khí */
-    --dark-bg: #11141a;       /* Nền đen tối tối giản */
-    --card-bg: #1a1e26;       /* Nền xám cho các thẻ card */
+    --primary-color: #ff6a00; 
+    --dark-bg: #11141a;       
+    --card-bg: #1a1e26;     
     --text-white: #ffffff;
     --text-gray: #a0a5b0;
 }
@@ -20,7 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* --- NAVIGATION BAR --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -83,10 +81,8 @@ body {
     animation: pulse 1.5s infinite;
 }
 
-/* --- HERO SECTION --- */
 .hero-section {
     height: 100vh;
-    /* Tạo hiệu ứng: 40% bên trái tối đen trong suốt, góc từ 40% đến 70% mờ dần ra sáng */
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 70%), 
                       url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1920'); 
     background-size: cover;
@@ -102,8 +98,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* 0.6 là độ tối (từ 0 đến 1) */
-    z-index: 1; /* Nằm trên ảnh nền */
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 1; 
 }
 .hero-content {
     position: relative;
@@ -169,7 +165,6 @@ body {
     transform: translateY(-3px);
 }
 
-/* Badge 10 năm kinh nghiệm góc phải */
 .experience-badge {
     position: absolute;
     right: 8%;
@@ -185,7 +180,6 @@ body {
 .experience-badge p { font-weight: 600; font-size: 14px; margin-bottom: 10px; }
 .experience-badge small { color: rgba(255,255,255,0.8); }
 
-/* --- CÁC SỐ LIỆU ĐẾM TỰ ĐỘNG --- */
 .counter-bar {
     background-color: var(--card-bg);
     display: grid;
@@ -211,7 +205,7 @@ body {
     color: var(--text-gray);
 }
 
-/* --- KHỐI DỊCH VỤ DỰ ÁN --- */
+
 .services-section {
     padding: 80px 8%;
 }
@@ -288,7 +282,6 @@ body {
     color: var(--primary-color);
 }
 
-/* --- TIỆN ÍCH NỔI --- */
 .floating-contact {
     position: fixed;
     bottom: 30px;
@@ -314,7 +307,6 @@ body {
 .top-btn { background-color: #333; opacity: 0; pointer-events: none;}
 .top-btn.show { opacity: 1; pointer-events: auto;}
 
-/* --- ANIMATIONS HỆ THỐNG --- */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
@@ -324,12 +316,10 @@ body {
     100% { background-position: 0 0; }
 }
 
-
-/* --- TỐI ƯU RESPONSIVE TOÀN DIỆN CHO MOBILE & TABLET --- */
 @media (max-width: 768px) {
     /* 1. Header & Banner */
     .nav-links, .hotline { 
-        display: none; /* Ẩn menu và hotline để tránh chật màn hình */
+        display: none; 
     }
     .navbar {
         padding: 15px 20px;
@@ -341,22 +331,20 @@ body {
         text-align: center;
     }
     .hero-content h1 { 
-        font-size: 32px; /* Thu nhỏ chữ tiêu đề chính */
+        font-size: 32px; 
     }
     .hero-btns {
         justify-content: center;
-        flex-direction: column; /* Nút bấm xếp dọc cho dễ bấm */
+        flex-direction: column; 
         gap: 10px;
     }
     .experience-badge { 
         position: relative; 
         right: 0; bottom: 0; 
-        margin: 30px auto 0; /* Đưa khối 10 năm kinh nghiệm ra giữa */
+        margin: 30px auto 0; 
         width: 100%;
         max-width: 280px;
     }
-
-    /* 2. Sửa các phần chia cột (Grid & Flex) về 1 cột dọc */
     .counter-bar, 
     .services-grid, 
     .about-section > div, 
@@ -365,8 +353,6 @@ body {
         gap: 20px; 
         padding: 40px 20px !important;
     }
-
-    /* 3. Phần Dự án tiêu biểu (Từ 5 cột thành 2 cột cho đẹp, không bị quá dài) */
     .projects-section {
         padding: 40px 20px !important;
     }
@@ -378,26 +364,23 @@ body {
     }
     .projects-section style, 
     .projects-section > div:last-child {
-        grid-template-columns: repeat(2, 1fr) !important; /* Chia 2 cột trên mobile */
+        grid-template-columns: repeat(2, 1fr) !important; 
         gap: 10px;
     }
-
-    /* 4. Phần Quy trình làm việc (Xếp dọc và ẩn mũi tên chỉ hướng) */
     .process-section > div:last-child {
         flex-direction: column !important;
         gap: 15px;
     }
     .step-arrow {
-        transform: rotate(90deg); /* Xoay mũi tên chỉ xuống dưới */
+        transform: rotate(90deg); 
         margin: 5px 0;
     }
     .process-step {
         width: 100%;
     }
 
-    /* 5. Phần Footer & Form liên hệ */
     footer > div:first-child {
-        grid-template-columns: 1fr !important; /* Đưa thông tin, form và bản đồ về 1 cột */
+        grid-template-columns: 1fr !important; 
         gap: 35px;
     }
     footer {
@@ -412,10 +395,6 @@ body {
         gap: 10px;
     }
 }
-
-/* --- CSS BỔ SUNG CHO ĐẦY ĐỦ GIAO DIỆN MẪU --- */
-
-/* Nút bấm video nhấp nháy */
 .about-video-box {
     overflow: hidden;
     border-radius: 4px;
@@ -445,7 +424,6 @@ body {
     font-weight: bold; font-size: 12px; border-radius: 2px;
 }
 
-/* Thẻ Dự án tiêu biểu */
 .project-card {
     position: relative;
     height: 280px;
@@ -470,7 +448,6 @@ body {
 .pj-info h4 { font-size: 15px; margin-bottom: 5px; color: #fff;}
 .pj-info small { color: var(--primary-color);}
 
-/* Khối 5 bước Quy trình */
 .process-step {
     background: #11141a;
     padding: 25px;
@@ -493,7 +470,6 @@ body {
 .process-step p { font-size: 12px; color: var(--text-gray); line-height: 1.5;}
 .step-arrow { color: rgba(255,255,255,0.1); font-size: 14px; }
 
-/* Thẻ đánh giá khách hàng */
 .review-card {
     background-color: var(--card-bg);
     padding: 30px;
@@ -507,7 +483,6 @@ body {
 }
 .review-card p { font-size: 14px; color: var(--text-gray); line-height: 1.6; font-style: italic;}
 
-/* --- TỐI ƯU CHỮ GIỚI THIỆU + HIỆU ỨNG TRƯỢT LÊN --- */
 .hero-content p {
     color: #ffffff !important;
     font-size: 16px;
@@ -516,96 +491,82 @@ body {
     max-width: 620px;
     font-weight: 500;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.85), -1px -1px 0px rgba(0, 0, 0, 0.4);
-
-    /* Bắt đầu thêm hoạt ảnh tại đây */
-    opacity: 0;                          /* Ban đầu ẩn chữ đi */
-    transform: translateY(20px);         /* Đẩy chữ dịch xuống dưới 20px */
-    animation: fadeInUp 1s ease forwards; /* Chạy hiệu ứng tên là fadeInUp trong 1 giây */
-    animation-delay: 0.5s;               /* Chờ 0.5 giây sau khi load trang rồi mới hiện để chờ các phần khác */
+    opacity: 0;                         
+    transform: translateY(20px);         
+    animation: fadeInUp 1s ease forwards; 
+    animation-delay: 0.5s;               
 }
 
-/* Định nghĩa chuyển động cho hiệu ứng */
 @keyframes fadeInUp {
     to {
-        opacity: 1;                      /* Hiện rõ chữ */
-        transform: translateY(0);        /* Trả chữ về vị trí cũ */
+        opacity: 1;                      
+        transform: translateY(0);        
     }
 }
 
-
-/* ĐỊNH DẠNG KHỐI LOGO CAO CẤP */
 .logo {
     display: flex;
     flex-direction: column;
 }
 
 .logo-link {
-    text-decoration: none; /* Bỏ gạch chân mặc định */
+    text-decoration: none; 
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease;
 }
 
-/* Chữ CAO CƯỜNG và Icon bánh răng */
+
 .logo .orange-text {
-    color: var(--primary-color); /* Sử dụng màu cam thương hiệu của bạn */
+    color: var(--primary-color); 
     font-size: 22px;
     font-weight: 800;
     letter-spacing: 1px;
     display: flex;
     align-items: center;
-    gap: 8px; /* Khoảng cách giữa icon và chữ */
+    gap: 8px; 
     text-transform: uppercase;
     transition: color 0.3s ease;
 }
 
-/* Hiệu ứng xoay nhẹ cực nghệ cho icon bánh răng */
+
 .logo .icon-spin {
     font-size: 20px;
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Chữ CƠ KHÍ nhỏ phía dưới */
+
 .logo .sub-logo {
-    color: #ffffff; /* Màu trắng nổi bật trên nền tối */
+    color: #ffffff;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 6.5px; /* Giãn chữ ra bằng chiều ngang chữ CAO CƯỜNG */
+    letter-spacing: 6.5px; 
     text-transform: uppercase;
-    margin-top: -2px; /* Kéo sát lên trên một chút cho cân đối */
-    padding-left: 2px; /* Cân bằng khoảng trống do letter-spacing tạo ra */
-    opacity: 0.7; /* Làm mờ nhẹ tạo chiều sâu phân cấp thị giác */
+    margin-top: -2px;
+    padding-left: 2px; 
+    opacity: 0.7;
     transition: all 0.3s ease;
 }
 
-/* ==========================================
-   HIỆU ỨNG HOVER (RÊ CHUỘT VÀO LOGO)
-   ========================================== */
 .logo-link:hover .orange-text {
     color: #ffffff; /* Chữ to đổi sang màu trắng */
 }
 
 .logo-link:hover .sub-logo {
-    color: var(--primary-color); /* Chữ nhỏ đổi sang màu cam lửa */
+    color: var(--primary-color); 
     opacity: 1;
-    letter-spacing: 8px; /* Hiệu ứng giãn chữ nhẹ cực công nghệ */
+    letter-spacing: 8px; 
 }
 
 .logo-link:hover .icon-spin {
-    transform: rotate(180deg); /* Bánh răng tự xoay nửa vòng khi rê chuột vào */
+    transform: rotate(180deg); 
     color: #ffffff;
 }
 
-/* ======================================================== */
-/* HIỆU ỨNG SANG TRỌNG & CẦU KỲ MỚI (LUXURY EFFECTS)        */
-/* ======================================================== */
-
-/* 1. Mượt mà toàn trang */
 html {
   scroll-behavior: smooth !important;
 }
 
-/* 2. Header kính mờ cao cấp */
 .navbar {
   backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
@@ -614,7 +575,6 @@ html {
   transition: all 0.4s ease;
 }
 
-/* 3. Nút bấm tỏa sáng kim loại (Shine Effect) */
 .btn-orange, .btn-outline {
   position: relative;
   overflow: hidden;
@@ -642,7 +602,6 @@ html {
   box-shadow: 0 8px 25px rgba(255, 102, 0, 0.5) !important;
 }
 
-/* 4. Thẻ dịch vụ & Dự án phát sáng viền khi Hover (Glow & Glass) */
 .service-card, .project-card {
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
@@ -664,7 +623,6 @@ html {
   transform: scale(1.12) rotate(1deg);
 }
 
-/* 5. Nút Liên Hệ Gọi/Zalo nhịp thở cuốn hút */
 .float-btn {
   animation: pulseGlow 2s infinite;
 }
@@ -681,7 +639,6 @@ html {
   }
 }
 
-/* 6. Khối điểm nhấn kinh nghiệm 10+ năm */
 .experience-badge {
   background: rgba(20, 24, 33, 0.9) !important;
   backdrop-filter: blur(10px);
@@ -694,18 +651,11 @@ html {
     display: inline-block;
 }
 
-/* ======================================================== */
-/* ĐÈ NÚT TOP - THAY THẾ BẰNG MENU FAB GỌN GÀNG            */
-/* ======================================================== */
 @media (max-width: 768px) {
     .navbar .nav-links { display: none !important; }
-
-    /* 1. ẨN HOÀN TOÀN nút Scroll Top cũ trên Mobile */
     #scrollTop, .float-btn.top-btn {
         display: none !important;
     }
-
-    /* 2. Cụm nút Zalo / Phone - Đặt ngay phía trên nút FAB */
     .floating-contact {
         position: fixed;
         bottom: 85px !important; 
@@ -715,8 +665,6 @@ html {
         flex-direction: column;
         gap: 12px;
     }
-
-    /* 3. Nút FAB Menu - ĐẰM NGAY GÓC DƯỚI CÙNG (Thay cho nút Top) */
     .fab-wrapper {
         position: fixed;
         bottom: 20px !important;
@@ -773,8 +721,6 @@ html {
         text-decoration: none;
         font-size: 17px;
     }
-
-    /* Vị trí xòe cánh quạt tròn mượt hướng lên trên & sang trái */
     .fab-wrapper.active .fab-action:nth-child(1) { transform: translate(-85px, 0); opacity: 1; pointer-events: auto; }
     .fab-wrapper.active .fab-action:nth-child(2) { transform: translate(-75px, -45px); opacity: 1; pointer-events: auto; }
     .fab-wrapper.active .fab-action:nth-child(3) { transform: translate(-45px, -75px); opacity: 1; pointer-events: auto; }
@@ -787,18 +733,13 @@ html {
         box-shadow: 0 0 12px rgba(255, 102, 0, 0.6);
     }
 }
-/* ======================================================== */
-/* FIX TRIỆT ĐỂ LỖI VỠ LAYOUT VÀ NÚT FAB TRÊN MOBILE        */
-/* ======================================================== */
 
-/* 1. Chống tràn chiều rộng toàn trang */
 html, body {
     max-width: 100% !important;
     overflow-x: hidden !important;
 }
 
 @media (max-width: 768px) {
-    /* 2. Sửa Header không bị tràn chữ hotline */
     .navbar {
         padding: 10px 15px !important;
         justify-content: space-between !important;
@@ -809,10 +750,9 @@ html, body {
     }
     
     .navbar .hotline small {
-        display: none !important; /* Ẩn chữ "Tư vấn 24/7" trên mobile cho gọn */
+        display: none !important; 
     }
 
-    /* 3. Thu gọn Hero Section & Huy hiệu Kinh nghiệm */
     .hero-section {
         padding: 100px 20px 40px !important;
         text-align: center;
@@ -832,7 +772,6 @@ html, body {
         max-width: 280px !important;
     }
 
-    /* 4. Định vị chính xác Cụm Nút FAB nổi ở góc màn hình */
     .fab-wrapper {
         position: fixed !important;
         bottom: 25px !important;
@@ -847,7 +786,6 @@ html, body {
         z-index: 999998 !important;
     }
 
-    /* 5. Ép màn hình hiển thị đúng padding các section */
     section {
         padding-left: 20px !important;
         padding-right: 20px !important;
@@ -856,7 +794,6 @@ html, body {
 @media (max-width: 768px) {
     .navbar .nav-links { display: none !important; }
 
-    /* 1. Nút Call / Zalo cố định GÓC DƯỚI BÊN PHẢI */
     .floating-contact {
         position: fixed !important;
         bottom: 20px !important;
@@ -868,7 +805,6 @@ html, body {
         gap: 12px;
     }
 
-    /* 2. Menu FAB GÓC DƯỚI BÊN TRÁI */
     .fab-wrapper {
         position: fixed !important;
         bottom: 20px !important;
@@ -927,7 +863,6 @@ html, body {
         font-size: 16px;
     }
 
-    /* BÁN KÍNH XÒE TỌA ĐỘ CHUẨN */
     .fab-wrapper.active .fab-action:nth-of-type(1) { transform: translate(0, -140px); opacity: 1; pointer-events: auto; }
     .fab-wrapper.active .fab-action:nth-of-type(2) { transform: translate(52px, -100px); opacity: 1; pointer-events: auto; }
     .fab-wrapper.active .fab-action:nth-of-type(3) { transform: translate(86px, -52px); opacity: 1; pointer-events: auto; }
@@ -940,7 +875,6 @@ html, body {
         box-shadow: 0 0 12px rgba(255, 102, 0, 0.6);
     }
 
-    /* 3. TẤT CẢ NHÃN CHỮ NẰM SANG BÊN PHẢI ICON (ĐẶT ĐÚNG VÀO Ô MÀU ĐỎ) */
     .fab-action::after {
         content: attr(data-name);
         position: absolute;
@@ -961,7 +895,6 @@ html, body {
         transition: opacity 0.25s ease;
     }
 
-    /* Bật hiển thị chữ khi mở menu */
     .fab-wrapper.active .fab-action::after {
         opacity: 1;
     }
@@ -973,18 +906,18 @@ html, body {
     }
 }
 
-/* Giao diện Màn hình chào mừng / Loading */
+
 #page-loader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #121619; /* Màu nền tối xịn xịn matching với web của bạn */
+    background-color: #121619; 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999999; /* Luôn nằm trên cùng */
+    z-index: 99999999; 
     transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
@@ -997,7 +930,6 @@ html, body {
     text-align: center;
 }
 
-/* Vòng xoay Loading hiệu ứng Cam/Vàng */
 .loader-spinner {
     width: 50px;
     height: 50px;
